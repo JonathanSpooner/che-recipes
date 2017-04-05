@@ -15,7 +15,7 @@
 FROM eclipse/debian_jdk8_node
 
 WORKDIR /home/user
-MKDIR /var/dynamodb
+RUN sudo mkdir /var/dynamodb
 
 # install DynamoDB to /var/dynamodb
 RUN curl -O https://s3-us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar.gz \
