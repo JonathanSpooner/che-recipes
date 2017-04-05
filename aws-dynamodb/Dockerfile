@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM eclipse/debian_jdk8
+FROM eclipse/debian_jdk8_node
 
 RUN sudo mkdir /var/dynamodb
 WORKDIR /var/dynamodb
@@ -26,8 +26,3 @@ RUN sha256sum -c dynamodb_local_latest.tar.gz.sha256 \
   && sudo tar -xzf dynamodb_local_latest.tar.gz \
   && sudo rm dynamodb_local_latest.tar.gz \
   && sudo rm dynamodb_local_latest.tar.gz.sha256
-
-ENTRYPOINT ["java", "-Djava.library.path=/var/dynamodb/DynamoDBLocal_lib/", "-jar", "/var/dynamodb/DynamoDBLocal.jar", "-dbPath", "/projects/dynamodb"]
-CMD ["-port", "8000"]
-
-VOLUME ["/projects/dynamodb"]
