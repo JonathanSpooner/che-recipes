@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM eclipse/debian_jdk8_node
+FROM eclipse/debian_jdk8
 
 RUN sudo mkdir /var/dynamodb
 WORKDIR /var/dynamodb
@@ -28,3 +28,4 @@ RUN sha256sum -c dynamodb_local_latest.tar.gz.sha256 \
   && sudo rm dynamodb_local_latest.tar.gz.sha256
 
 WORKDIR /home/user
+COPY entrypoint.sh .
