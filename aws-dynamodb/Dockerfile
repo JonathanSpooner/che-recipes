@@ -26,3 +26,5 @@ RUN sha256sum -c dynamodb_local_latest.tar.gz.sha256 \
   && sudo tar -xzf dynamodb_local_latest.tar.gz \
   && sudo rm dynamodb_local_latest.tar.gz \
   && sudo rm dynamodb_local_latest.tar.gz.sha256
+
+WORKDIR /home/user
