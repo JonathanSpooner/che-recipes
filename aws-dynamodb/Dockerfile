@@ -28,4 +28,4 @@ RUN sha256sum -c dynamodb_local_latest.tar.gz.sha256 \
   && sudo rm dynamodb_local_latest.tar.gz.sha256
 
 WORKDIR /home/user
-COPY entrypoint.sh .
+RUN mkdir dynamodb
