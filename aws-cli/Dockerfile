@@ -12,9 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 FROM eclipse/ubuntu_python
+
+# needed for aws-cli help output
+# see issue https://github.com/aws/aws-cli/issues/1957
+RUN sudo apt-get update && sudo apt-get install -y groff
 
 RUN pip install --upgrade --user awscli
 
 ENV PATH=/home/user/.local/bin:$PATH
-
