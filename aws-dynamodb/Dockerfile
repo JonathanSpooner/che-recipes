@@ -29,12 +29,3 @@ RUN sha256sum -c dynamodb_local_latest.tar.gz.sha256 \
 
 WORKDIR /home/user
 RUN mkdir dynamodb
-
-ENTRYPOINT 
-  ["java", 
-  "-Djava.library.path=/var/dynamodb/DynamoDBLocal_lib/",
-  "-jar",
-  "/var/dynamodb/DynamoDBLocal.jar",
-  "-dbPath",
-  "/home/user/dynamodb"]
-CMD ["-port", "8000"]
