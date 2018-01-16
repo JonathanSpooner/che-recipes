@@ -54,3 +54,6 @@ RUN pip install --upgrade --user awscli
 
 ENV PATH=/home/user/.local/bin:/home/user/phantomjs-2.1.1-linux-x86_64/bin:$PATH
 
+# zip
+RUN sudo apt-get install zip
+
