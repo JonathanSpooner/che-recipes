@@ -17,7 +17,7 @@
 FROM eclipse/stack-base:debian
     
 RUN sudo apt-get update && \
-    sudo apt-get -y install build-essential libkrb5-dev gcc make ruby-full rubygems debian-keyring python2.7 && \
+    sudo apt-get -y install build-essential libkrb5-dev gcc make ruby-full rubygems debian-keyring python2.7 apt-transport-https ca-certificates curl gnupg2 software-properties-common && \
     sudo gem install --no-rdoc --no-ri sass -v 3.4.22 && \
     sudo gem install --no-rdoc --no-ri compass && \
     sudo apt-get clean && \
@@ -25,8 +25,10 @@ RUN sudo apt-get update && \
     sudo apt-get -y clean && \
     sudo rm -rf /var/lib/apt/lists/* 
 
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 RUN wget -qO- https://deb.nodesource.com/setup_7.x | sudo -E bash -
-RUN sudo apt update && sudo apt -y install nodejs
+RUN sudo apt update && sudo apt -y install nodejs docker-ce
 
 EXPOSE 1337 3000 4200 5000 9000 8003
 RUN sudo npm install --unsafe-perm -g gulp bower grunt grunt-cli yeoman-generator yo generator-angular generator-karma generator-webapp
