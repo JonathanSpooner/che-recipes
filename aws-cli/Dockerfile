@@ -59,3 +59,7 @@ ENV PATH=/home/user/.local/bin:/home/user/phantomjs-2.1.1-linux-x86_64/bin:$PATH
 # zip
 RUN sudo apt-get install zip
 
+#use host's docker daemon
+#see https://www.eclipse.org/che/docs/ide/docker/index.html
+#also set in host's /etc/default/docker DOCKER_OPTS=" -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
+ENV DOCKER_HOST=192.168.0.194
